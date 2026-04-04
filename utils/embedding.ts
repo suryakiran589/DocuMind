@@ -9,7 +9,7 @@ async function getEmbedder() {
   return embedder;
 }
 
-export async function embedText(text) {
+export async function embedText(text:string) {
   const model = await getEmbedder();
 
   const output = await model(text, {

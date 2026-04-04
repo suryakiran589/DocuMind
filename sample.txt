@@ -1,0 +1,9 @@
+React is a JavaScript library used to build user interfaces. It is maintained by Meta and allows developers to create reusable UI components.
+
+Next.js is a React framework that provides features like server-side rendering, static site generation, and API routes. It helps build fast and scalable web applications.
+
+JavaScript promises are used to handle asynchronous operations. A promise can be in one of three states: pending, fulfilled, or rejected.
+
+Node.js is a runtime environment that allows JavaScript to run on the server. It is built on Chrome's V8 engine and is widely used for backend development.
+
+RAG (Retrieval-Augmented Generation) is a technique used in AI systems where relevant data is retrieved from a database and passed to a language model to generate better and more accurate responses.

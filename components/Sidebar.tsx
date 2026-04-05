@@ -23,75 +23,71 @@ export default function Sidebar({ chats }: { chats: Chat[] }) {
   };
 
   return (
-    <>
-      <div style={{
-        width: "260px",
-        height: "100vh",
-        borderRight: "1px solid #e5e7eb",
-        display: "flex",
-        flexDirection: "column",
-        padding: "16px",
-        gap: "8px",
-      }}>
-        {/* Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-          <span style={{ fontWeight: 600, fontSize: "16px" }}>PDF Chats</span>
-          <button onClick={handleLogout} style={{ fontSize: "12px", color: "#6b7280" }}>
-            Logout
-          </button>
-        </div>
+  <>
+    <div className="w-64 h-screen bg-gray-50 border-r border-gray-100 flex flex-col p-4 gap-2">
 
-        {/* New PDF button */}
+      {/* Header */}
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-black rounded-md flex items-center justify-center">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M14 2v6h6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <span className="font-semibold text-sm text-gray-900">PDF Chat</span>
+        </div>
         <button
-          onClick={() => setShowUpload(true)}
-          style={{
-            width: "100%",
-            padding: "10px",
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontSize: "14px",
-            marginBottom: "8px",
-          }}
+          onClick={handleLogout}
+          className="text-xs text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
         >
-          + New PDF
+          Logout
         </button>
-
-        {/* Chat list */}
-        <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "4px" }}>
-          {chats.length === 0 && (
-            <p style={{ fontSize: "13px", color: "#9ca3af", textAlign: "center", marginTop: "24px" }}>
-              No chats yet. Upload a PDF to start.
-            </p>
-          )}
-          {chats.map((chat) => (
-            <button
-              key={chat.id}
-              onClick={() => router.push(`/dashboard/chat/${chat.id}`)}
-              style={{
-                width: "100%",
-                padding: "10px 12px",
-                background: activeChatId === chat.id ? "#f3f4f6" : "transparent",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-                textAlign: "left",
-                fontSize: "13px",
-                color: "#111",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {chat.file_name}
-            </button>
-          ))}
-        </div>
       </div>
 
-      {showUpload && <UploadModal onClose={() => setShowUpload(false)} />}
-    </>
-  );
+      {/* New PDF button */}
+      <button
+        onClick={() => setShowUpload(true)}
+        className="w-full flex items-center justify-center gap-2 py-2.5 bg-black text-white text-sm rounded-lg hover:bg-gray-800 transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12h14" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+        New PDF
+      </button>
+
+      {/* Section label */}
+      <p className="text-xs text-gray-400 font-medium px-1 mt-2">Recent chats</p>
+
+      {/* Chat list */}
+      <div className="flex-1 overflow-y-auto flex flex-col gap-1">
+        {chats.length === 0 && (
+          <p className="text-xs text-gray-400 text-center mt-6 leading-relaxed">
+            No chats yet.<br/>Upload a PDF to start.
+          </p>
+        )}
+        {chats.map((chat) => (
+          <button
+            key={chat.id}
+            onClick={() => router.push(`/dashboard/chat/${chat.id}`)}
+            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-left transition-colors group
+              ${activeChatId === chat.id
+                ? "bg-white shadow-sm border border-gray-100 text-gray-900"
+                : "text-gray-600 hover:bg-white hover:text-gray-900"
+              }`}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M14 2v6h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-xs truncate">{chat.file_name}</span>
+          </button>
+        ))}
+      </div>
+
+    </div>
+
+    {showUpload && <UploadModal onClose={() => setShowUpload(false)} />}
+  </>
+);
 }

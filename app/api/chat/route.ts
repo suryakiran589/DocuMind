@@ -90,7 +90,7 @@ If the answer is not in the context, say "I don't know".
         content: `Context: ${context}\n\nQuestion: ${question}`,
       },
     ],
-    temperature: 0.2,
+    temperature: 0.5,
   });
 
   const answer: string =

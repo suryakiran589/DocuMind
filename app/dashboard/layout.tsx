@@ -19,11 +19,11 @@ export default async function DashboardLayout({
     .order("created_at", { ascending: false });
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar chats={chats ?? []} />
-      <main style={{ flex: 1, overflow: "hidden" }}>
-        {children}
-      </main>
-    </div>
-  );
+  <div className="flex h-screen bg-gray-50">
+    <Sidebar chats={chats ?? []} />
+    <main className="flex-1 overflow-hidden bg-white">
+      {children}
+    </main>
+  </div>
+);
 }

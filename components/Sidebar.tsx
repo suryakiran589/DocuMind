@@ -24,7 +24,7 @@ export default function Sidebar({ chats }: { chats: Chat[] }) {
 
   return (
   <>
-    <div className="w-64 h-screen bg-gray-50 border-r border-gray-100 flex flex-col p-4 gap-2">
+    <div className="w-64 h-full bg-gray-50 border-r border-gray-100 flex flex-col p-4 gap-2">
 
       {/* Header */}
       <div className="flex items-center justify-between mb-2">

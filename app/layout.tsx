@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PDF Chat",
+  title: "DocuMind",
   description: "Chat with your PDFs using AI",
 };
 

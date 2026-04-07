@@ -8,7 +8,7 @@ export default function LoginButton() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://documind-by-suryakiran.vercel.app/auth/callback",
+        redirectTo: window.location.origin,
       },
     });
   };
